@@ -1,0 +1,30 @@
+dotenv: .env
+wallets:
+  from_key: ${PRIVATE_KEY}
+compiler:
+  solc:
+    remappings:
+      - "@aave=aave/protocol-v2@1.0.1"
+      - "@WETH10=0xyan/WETH10@1.0.0"
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@0.6.1"
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.8.2"
+dependencies:
+  - "aave/protocol-v2@1.0.1"
+  - "0xyan/WETH10@1.0.0"
+  - "smartcontractkit/chainlink-brownie-contracts@0.6.1"
+  - "OpenZeppelin/openzeppelin-contracts@4.8.2"
+networks:
+  goerli:
+    weth: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6"
+    dai: "0x75Ab5AB1Eef154C0352Fc31D2428Cef80C7F8B33"
+    dai_oracle: "0x0d79df66BE487753B02D015Fb622DED7f0E9798d"
+    eth_oracle: "0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e"
+    lending_pool_address_provider: "0x5E52dEc931FFb32f609681B8438A51c675cc232d"
+    publish_source: True
+  mainnet-fork:
+    weth: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    dai: "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+    dai_oracle: "0xAed0c38402a5d19df6E4c03F4E2DceD6e29c1ee9"
+    eth_oracle: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+    lending_pool_address_provider: "0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5"
+    publish_source: False
