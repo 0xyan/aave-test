@@ -29,14 +29,6 @@ def depositETH():
     account = get_account()
     tx1 = strategy.depositETH({"from": account, "value": amount})
     tx1.wait(1)
-    tx2 = strategy.getWethBalance({"from": account})
-    print(f"weth_balance = {tx2}")
-    tx3 = strategy.depositWeth(amount, {"from": account})
-    tx3.wait(1)
-    tx4 = strategy.getWethBalance({"from": account})
-    print(f"weth_balance = {tx4}")
-    tx5 = strategy.borrowDai(amount, {"from": account})
-    tx5.wait(1)
     print("borrowed DAI!")
 
 

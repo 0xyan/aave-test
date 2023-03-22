@@ -59,7 +59,7 @@ contract Strategy {
         IWETH10 wethContract = IWETH10(wethAddress);
         wethContract.deposit{value: msg.value}();
         //needs to be approved first
-        //depositWethBorrowDai(msg.value);
+        depositWeth(msg.value);
         balances[msg.sender] += msg.value;
     }
 
@@ -70,6 +70,7 @@ contract Strategy {
         IERC20 wethContract = IERC20(wethAddress);
         wethContract.approve(lendingPoolAddress, value);
         lendingPool.deposit(wethAddress, value, address(this), 0);
+        borrowDai(value);
     }
 
     function borrowDai(uint _value) public {
