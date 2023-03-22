@@ -27,8 +27,6 @@ def deploy():
 def depositETH():
     strategy = Strategy[-1]
     account = get_account()
-    interface.IERC20(weth).approve(strategy.address, amount, {"from": account})
-    print("approved!")
     tx1 = strategy.depositETH({"from": account, "value": amount})
     tx1.wait(1)
     tx2 = strategy.getWethBalance({"from": account})

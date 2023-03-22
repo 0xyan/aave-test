@@ -57,9 +57,8 @@ contract Strategy {
     function depositETH() public payable {
         require(msg.value > 0, "can't be zero");
         IWETH10 wethContract = IWETH10(wethAddress);
-        wethContract.deposit();
+        wethContract.deposit{value: msg.value}();
         //needs to be approved first
-        wethContract.transferFrom(msg.sender, address(this), msg.value);
         //depositWethBorrowDai(msg.value);
         balances[msg.sender] += msg.value;
     }
