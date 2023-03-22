@@ -69,7 +69,7 @@ contract Strategy {
         ILendingPool lendingPool = ILendingPool(lendingPoolAddress);
         IERC20 wethContract = IERC20(wethAddress);
         wethContract.approve(lendingPoolAddress, value);
-        lendingPool.deposit(wethAddress, value, msg.sender, 0);
+        lendingPool.deposit(wethAddress, value, address(this), 0);
     }
 
     function borrowDai(uint _value) public {
@@ -86,7 +86,7 @@ contract Strategy {
             toBorrow,
             2,
             0,
-            msg.sender
+            address(this)
         );
     }
 
