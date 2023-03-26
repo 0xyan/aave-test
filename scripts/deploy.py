@@ -8,6 +8,7 @@ dai_oracle = config["networks"][network.show_active()]["dai_oracle"]
 lendingPoolAddressProvider = config["networks"][network.show_active()][
     "lending_pool_address_provider"
 ]
+dai_debt = config["networks"][network.show_active()]["aave_dai_debt_token"]
 amount = 1 * 10**18
 
 
@@ -19,6 +20,7 @@ def deploy():
         eth_oracle,
         dai_oracle,
         lendingPoolAddressProvider,
+        dai_debt,
         {"from": account},
         publish_source=config["networks"][network.show_active()]["publish_source"],
     )
@@ -29,7 +31,12 @@ def depositETH():
     account = get_account()
     tx1 = strategy.depositETH({"from": account, "value": amount})
     tx1.wait(1)
+    tx2 = strategy.depositWeth({"from": account})
     print("borrowed DAI!")
+    tx2 = strategy.withdrawFromUni({"from": account})
+    tx2.wait(1)
+    tx3 = strategy.withdrawAll()
+    tx3.wait(1)
 
 
 def main():
