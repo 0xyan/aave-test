@@ -139,7 +139,7 @@ contract Strategy is Ownable {
 
     //let users to deposit eth here and call deposit to aave
     function depositETH() public payable {
-        require(msg.value > 0, "can't be zero");
+        require(msg.value > 0, "cant be zero");
         uint _value = (msg.value * 2) / 3;
         IWETH10 wethContract = IWETH10(wethAddress);
         wethContract.deposit{value: _value}();
